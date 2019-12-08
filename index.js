@@ -492,13 +492,12 @@ $(document).ready( function() {
       }
     }
     else if(distY>threshold) {
-        move_down();
-        create_tile();
-      }
-      else if(distY<-1*threshold) {
-        move_up();
-        create_tile();
-      }
+      move_down();
+      create_tile();
+    }
+    else if(distY<-1*threshold) {
+      move_up();
+      create_tile();
     }
     stat = check_game();
     if(stat!="none") {respond(stat);}
