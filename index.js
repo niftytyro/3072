@@ -463,14 +463,44 @@ $(document).ready( function() {
       create_tile();
     }
     }
-    var tem = "";
-    for (var i = 0; i<4; i++) {
-      for (var j = 0; j<4; j++) {
-        tem += tiles[i][j].value + " ";
+    stat = check_game();
+    if(stat!="none") {respond(stat);}
+  });
+  var startX, startY, distX, distY, threshold;
+  $(".game").on("touchmove", function(e) {
+    e.preventDefault();
+  });
+  $(".game").on("touchstart", function(e) {
+    var touchobj = e.changedTouches[0];
+    distX = distY = 0;
+    startX = touchobj.pageX;
+    startY = touchobj.pageY;
+    e.preventDefault;
+  });
+  $(".game").on("touchend", function(e) {
+    var touchobj = e.changedTouches[0];
+    distX = touchobj.pageX - startX;
+    distY = touchobj.pageY - startY;
+    if(Math.abs(distY)<50) {
+      if(distX>threshold) {
+        move_right();
+        create_tile();
       }
-      tem += "\n";
+      else if(distX<-1*threshold) {
+        move_left();
+        create_tile();
+      }
     }
-    console.log(tem);
+    else if(Math.abs(distX)<50) {
+      if(distY>threshold) {
+        move_down();
+        create_tile();
+      }
+      else if(distY<-1*threshold) {
+        move_up();
+        create_tile();
+      }
+    }
     stat = check_game();
     if(stat!="none") {respond(stat);}
   });
