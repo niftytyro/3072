@@ -466,10 +466,9 @@ $(document).ready( function() {
     stat = check_game();
     if(stat!="none") {respond(stat);}
   });
-  var startX = 0, startY = 0, distX = 0, distY = 0, threshold = 50;
+  var startX = 0, startY = 0, distX = 0, distY = 0, threshold = 20;
   $(".game").on("touchmove", function(e) {
     e.preventDefault();
-    $(".logs").text(distX, distY);
   });
   $(".game").on("touchstart", function(e) {
     var touchobj = e.changedTouches[0];
@@ -482,7 +481,6 @@ $(document).ready( function() {
     var touchobj = e.changedTouches[0];
     distX = touchobj.pageX - startX;
     distY = touchobj.pageY - startY;
-    $(".logs").text((distX, distY));
     if(Math.abs(distY)<50) {
       if(distX>threshold) {
         move_right();
