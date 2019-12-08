@@ -491,8 +491,7 @@ $(document).ready( function() {
         create_tile();
       }
     }
-    else if(Math.abs(distX)<50) {
-      if(distY>threshold) {
+    else if(distY>threshold) {
         move_down();
         create_tile();
       }
