@@ -466,7 +466,7 @@ $(document).ready( function() {
     stat = check_game();
     if(stat!="none") {respond(stat);}
   });
-  var startX, startY, distX, distY, threshold;
+  var startX, startY, distX, distY, threshold = 50;
   $(".game").on("touchmove", function(e) {
     e.preventDefault();
   });
