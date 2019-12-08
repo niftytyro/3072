@@ -466,9 +466,10 @@ $(document).ready( function() {
     stat = check_game();
     if(stat!="none") {respond(stat);}
   });
-  var startX, startY, distX, distY, threshold = 50;
+  var startX = 0, startY = 0, distX = 0, distY = 0, threshold = 50;
   $(".game").on("touchmove", function(e) {
     e.preventDefault();
+    $(".logs").text(distX, distY);
   });
   $(".game").on("touchstart", function(e) {
     var touchobj = e.changedTouches[0];
